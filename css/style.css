@@ -566,8 +566,10 @@ main {
   }
   /* Ảnh chiếm phần trên, đúng tỉ lệ 2:3, chừa chỗ cho chữ bên dưới */
   .hero-img, .thanks-img {
-    inset: 0 0 auto 0; width: 100%; aspect-ratio: 2 / 3;
-    max-height: calc(100svh - 240px); min-height: 320px;
+    /* Không dùng aspect-ratio: Safari iOS co chiều rộng khi chạm max-height */
+    inset: 0 0 auto 0; width: 100%;
+    height: max(320px, min(150vw, calc(100vh - 240px)));
+    height: max(320px, min(150vw, calc(100svh - 240px)));
     animation: none; transform: none;
     background-position: center 18%;
     -webkit-mask-image: linear-gradient(to bottom, #000 70%, rgba(0,0,0,.6) 85%, transparent 100%);
