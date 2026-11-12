@@ -111,7 +111,7 @@ window.WEDDING = {
 
   /* Link Google Apps Script (xem HUONG_DAN.md) để lưu xác nhận tham dự & lời chúc.
      Để trống thì form vẫn chạy nhưng không lưu lên Google Sheets. */
-  sheetApi: "",
+  sheetApi: "https://script.google.com/macros/s/AKfycbyMCRP1P_CqTeceBPzr240eZkmowLk2pbHyiaM5qfCPaoeaURmXi9i4tybrsVDVp-8a/exec",
 
   /* Nhắn lời chúc trực tiếp cho cô dâu / chú rể
      phone:     số điện thoại (dùng cho SMS), vd "0912345678"
