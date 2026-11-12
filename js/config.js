@@ -105,8 +105,7 @@ window.WEDDING = {
   ],
   shuffle: true, // true = phát ngẫu nhiên, mỗi lần mở thiệp bắt đầu bằng bài khác
 
-  /* Danh sách khách mời: file guests.txt, mỗi dòng "1. Anh A" */
-  guestsFile: "guests.txt",
+  /* Danh sách khách mời: tab "KhachMoi" trong Google Sheet (cột Mã, Tên khách) */
   defaultGuest: "Quý Khách",
 
   /* Link Google Apps Script (xem HUONG_DAN.md) để lưu xác nhận tham dự & lời chúc.

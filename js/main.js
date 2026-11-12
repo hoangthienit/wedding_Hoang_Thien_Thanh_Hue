@@ -74,16 +74,13 @@
     try { history.replaceState(null, "", base + guestId); } catch (e) {}
   }
 
-  if (guestId) {
-    const base = location.pathname.replace(/\/\d+\/?$/, "/").replace(/[^/]*$/, "");
-    fetch(base + C.guestsFile + "?v=" + Date.now())
-      .then((r) => (r.ok ? r.text() : ""))
-      .then((txt) => {
-        const line = txt.split(/\r?\n/).map((l) => l.trim())
-          .map((l) => l.match(/^(\d+)\s*[.)\-:]\s*(.+)$/))
-          .find((m) => m && m[1] === guestId);
-        if (line) {
-          guestName = line[2].replace(/\s+link\s*:.*$/i, "").trim();
+  // Tên khách lấy từ tab "KhachMoi" trong Google Sheet (chỉ hỏi đúng 1 mã)
+  if (guestId && C.sheetApi) {
+    fetch(C.sheetApi + "?action=guest&id=" + encodeURIComponent(guestId))
+      .then((r) => r.json())
+      .then((g) => {
+        if (g && g.name) {
+          guestName = g.name;
           setGuest(guestName);
           const n = $("#rsvpForm [name=name]");
           if (n && !n.value) n.value = guestName;

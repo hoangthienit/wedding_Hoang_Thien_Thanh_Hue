@@ -11,8 +11,6 @@ ima/album/            Ảnh album (tự tạo bởi them-anh.sh)
 js/gallery.js         Danh sách album (tự tạo bởi them-anh.sh)
 them-anh.sh           Script thêm ảnh vào album
 music/                Bỏ file mp3 vào đây (xem music/README.txt)
-guests.txt            Danh sách khách mời
-tao-link.html         Công cụ tạo link cho từng khách (chỉ bạn dùng)
 404.html, _redirects, vercel.json, .htaccess   Để link dạng .../1 chạy được trên mọi hosting
 google-apps-script.gs Code lưu xác nhận & lời chúc vào Google Sheets
 ```
@@ -38,17 +36,19 @@ Chép các file mp3 vào `music/` đúng tên trong `music/README.txt`, hoặc s
 - Trình duyệt không cho phát nhạc khi khách chưa chạm vào trang, nên nhạc bắt đầu khi khách bấm **"Mở thiệp"**.
 - Hết bài sẽ tự chuyển bài kế, bài thiếu file thì tự bỏ qua. Đặt `shuffle: true` nếu muốn phát ngẫu nhiên.
 
-## 3. Tên khách mời
-File `guests.txt`, mỗi dòng một khách:
-```
-1. Anh A
-2. Chị B
-3. Gia đình Ông Bà C
-```
+## 3. Tên khách mời (lấy từ Google Sheet)
+Cần làm xong mục 4 trước. Danh sách khách nằm ở tab **KhachMoi** trong Google Sheet (tab này tự tạo lần đầu có người mở link khách):
+
+| Mã | Tên khách | Link |
+|---|---|---|
+| 1 | Anh A | (tự tính) |
+| 2 | Chị B | (tự tính) |
+
+- Thêm khách: điền **Mã** (số, không trùng) và **Tên khách**, rồi kéo công thức cột **Link** xuống dòng mới.
 - `https://ten-mien/thiepcuoi/1` hiện **"Kính mời Anh A"**
 - `https://ten-mien/thiepcuoi/` hiện **"Kính mời Quý Khách"**
 - Cũng dùng được dạng `.../?g=1` hoặc `.../#1`.
-- Sau khi đăng, mở `.../tao-link.html` để có danh sách link copy sẵn cho từng khách.
+- Sửa tên trong Sheet là có hiệu lực ngay, không cần đẩy code lại.
 
 Hỗ trợ link dạng `/1`:
 | Hosting | Cách |
@@ -57,10 +57,6 @@ Hỗ trợ link dạng `/1`:
 | Netlify | Dùng sẵn `_redirects` |
 | Vercel | Dùng sẵn `vercel.json` |
 | Hosting Apache/cPanel | Dùng sẵn `.htaccess` |
-
-> Mở trực tiếp file `index.html` bằng cách double-click thì tên khách **không** hiện, vì trình duyệt chặn đọc file `guests.txt`. Để thử trên máy, chạy lệnh:
-> `cd /Volumes/Data/Code/Thiep_cuoi_online && python3 -m http.server 8000`
-> rồi mở `http://localhost:8000/?g=1`
 
 ## 4. Lưu Xác nhận tham dự & Lời chúc vào Google Sheets
 1. Tạo một Google Sheet mới, vào **Tiện ích mở rộng → Apps Script**.

@@ -29,7 +29,30 @@ function doPost(e) {
   return ContentService.createTextOutput(JSON.stringify({ ok: true })).setMimeType(ContentService.MimeType.JSON);
 }
 
+const SITE_URL = "https://hoangthienit.github.io/wedding_Hoang_Thien_Thanh_Hue/";
+
+// Tab "KhachMoi": cột A = Mã (số), cột B = Tên khách, cột C = Link (tự tính)
+function guestSheet_() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName("KhachMoi");
+  if (!sh) {
+    sh = ss.insertSheet("KhachMoi");
+    sh.appendRow(["Mã", "Tên khách", "Link"]);
+    sh.setFrozenRows(1);
+    [[1, "Anh A"], [2, "Chị B"], [3, "Gia đình Ông Bà C"]].forEach((r, i) =>
+      sh.appendRow([r[0], r[1], '="' + SITE_URL + '"&A' + (i + 2)]));
+  }
+  return sh;
+}
+
 function doGet(e) {
+  if (e.parameter.action === "guest") {
+    const id = String(e.parameter.id || "").trim();
+    const row = guestSheet_().getDataRange().getValues().slice(1)
+      .find((r) => id && String(r[0]).trim() === id);
+    const out = { name: row ? String(row[1]).trim() : "" };
+    return ContentService.createTextOutput(JSON.stringify(out)).setMimeType(ContentService.MimeType.JSON);
+  }
   if (e.parameter.action === "wishes") {
     const sh = getSheet_("LoiChuc", ["Thời gian", "Mã khách", "Họ tên", "Lời chúc", "Hiển thị"]);
     const rows = sh.getDataRange().getValues().slice(1)
