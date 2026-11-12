@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><title>Đang mở thiệp…</title>
+<script>
+  // Dùng cho GitHub Pages: link .../5 sẽ chuyển về thiệp với tên khách số 5
+  (function () {
+    var p = location.pathname.replace(/\/+$/, "");
+    var seg = p.split("/").pop();
+    var base = p.slice(0, p.length - seg.length);
+    location.replace(/^\d+$/.test(seg) ? base + "?g=" + seg : base || "/");
+  })();
+</script></head><body></body></html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Thiệp Cưới Hoàng Thiện &amp; Thanh Huế</title>
+  <meta name="description" content="Trân trọng kính mời bạn đến chung vui trong ngày thành hôn của Hoàng Thiện & Thanh Huế." />
+  <meta property="og:title" content="Thiệp Cưới Hoàng Thiện & Thanh Huế" />
+  <meta property="og:description" content="Trân trọng kính mời bạn đến chung vui cùng gia đình chúng tôi — 16.12.2026" />
+  <meta property="og:image" content="ima/web/anh-2.jpg" />
+  <meta name="theme-color" content="#f7d6df" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap&subset=vietnamese" rel="stylesheet" />
+  <link rel="preload" as="image" href="ima/web/anh-2.jpg" fetchpriority="high" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="locked">
+
+  <!-- ============ MÀN HÌNH MỞ THIỆP ============ -->
+  <div id="opener" class="opener">
+    <div class="opener-card">
+      <p class="eyebrow">Thiệp Mời Cưới</p>
+      <div class="opener-photo" id="openerPhoto"></div>
+      <h1 class="script names-big"><span data-f="groom.shortName"></span> <span class="amp">&amp;</span> <span data-f="bride.shortName"></span></h1>
+      <p class="opener-to">Kính gửi</p>
+      <p class="opener-guest script" data-guest></p>
+      <button id="openBtn" class="btn btn-primary btn-pulse">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+        Mở thiệp
+      </button>
+    </div>
+  </div>
+
+  <div id="petals" class="petals" aria-hidden="true"></div>
+
+  <!-- ============ NÚT NHẠC ============ -->
+  <div class="music" id="music" hidden>
+    <button id="musicBtn" class="music-btn" aria-label="Bật/tắt nhạc">
+      <svg class="ic-on" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6Z"/></svg>
+      <svg class="ic-off" viewBox="0 0 24 24"><path fill="currentColor" d="M4.27 3 3 4.27l9 9v.28A4 4 0 1 0 14 17v-1.73L19.73 21 21 19.73 4.27 3ZM14 7h4V3h-6v5.18l2 2V7Z"/></svg>
+    </button>
+    <button id="nextBtn" class="music-next" aria-label="Bài tiếp theo">
+      <svg viewBox="0 0 24 24"><path fill="currentColor" d="M6 18l8.5-6L6 6v12Zm10-12v12h2V6h-2Z"/></svg>
+    </button>
+    <div class="music-title"><span id="songTitle"></span></div>
+  </div>
+  <audio id="audio" preload="none"></audio>
+
+  <main>
+    <!-- ============ BÌA ============ -->
+    <section class="hero" id="hero">
+      <div class="hero-img" id="heroImg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow light">We are getting married</p>
+        <h1 class="script hero-names">
+          <span data-f="groom.shortName"></span>
+          <span class="amp">&amp;</span>
+          <span data-f="bride.shortName"></span>
+        </h1>
+        <div class="hero-date">
+          <span data-md="d">16</span><i></i><span data-md="m">12</span><i></i><span data-md="y">2026</span>
+        </div>
+      </div>
+      <a href="#verse" class="scroll-hint" aria-label="Cuộn xuống"><span></span></a>
+    </section>
+
+    <!-- ============ KINH THÁNH ============ -->
+    <section class="section verse reveal" id="verse">
+      <svg class="cross" viewBox="0 0 40 60" aria-hidden="true"><path d="M17 0h6v16h17v6H23v38h-6V22H0v-6h17z" fill="currentColor"/></svg>
+      <blockquote>
+        <p data-f="verse.text"></p>
+        <cite data-f="verse.ref"></cite>
+      </blockquote>
+    </section>
+
+    <!-- ============ HAI GIA ĐÌNH ============ -->
+    <section class="section families">
+      <div class="ornament reveal"></div>
+      <div class="family-grid">
+        <div class="family reveal">
+          <h3>Nhà Trai</h3>
+          <p><small>Ông</small><b data-f="groom.father"></b></p>
+          <p><small>Bà</small><b data-f="groom.mother"></b></p>
+          <p class="addr" data-f="groom.address"></p>
+        </div>
+        <div class="family-divider" aria-hidden="true"></div>
+        <div class="family reveal">
+          <h3>Nhà Gái</h3>
+          <p><small>Ông</small><b data-f="bride.father"></b></p>
+          <p><small>Bà</small><b data-f="bride.mother"></b></p>
+          <p class="addr" data-f="bride.address"></p>
+        </div>
+      </div>
+      <p class="announce reveal">Trân trọng báo tin Lễ Thành Hôn của con chúng tôi</p>
+    </section>
+
+    <!-- ============ CÔ DÂU CHÚ RỂ ============ -->
+    <section class="section couple">
+      <div class="person reveal">
+        <div class="avatar" id="groomAvatar"></div>
+        <p class="role">Chú Rể</p>
+        <p class="saint script" data-f="groom.saint"></p>
+        <h2 class="script" data-f="groom.fullName"></h2>
+        <p class="rank" data-f="groom.rank"></p>
+      </div>
+      <div class="heart-sep reveal" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.6-10-9.3C.4 8.6 2.3 4.5 6.2 4.5c2.2 0 3.6 1.2 4.3 2.4h3C14.2 5.7 15.6 4.5 17.8 4.5c3.9 0 5.8 4.1 4.2 7.2C19.5 16.4 12 21 12 21Z"/></svg>
+      </div>
+      <div class="person reveal">
+        <div class="avatar" id="brideAvatar"></div>
+        <p class="role">Cô Dâu</p>
+        <p class="saint script" data-f="bride.saint"></p>
+        <h2 class="script" data-f="bride.fullName"></h2>
+        <p class="rank" data-f="bride.rank"></p>
+      </div>
+    </section>
+
+    <!-- ============ LỜI MỜI ============ -->
+    <section class="section invite reveal">
+      <p class="invite-lead">Trân trọng kính mời</p>
+      <p class="invite-guest script" data-guest></p>
+      <p class="invite-text">đến dự bữa tiệc chung vui cùng gia đình chúng tôi.<br>Sự hiện diện của Quý vị là niềm vinh hạnh cho gia đình chúng tôi!</p>
+    </section>
+
+    <!-- ============ SỰ KIỆN ============ -->
+    <section class="section events">
+      <h2 class="section-title script reveal">Sự Kiện Cưới</h2>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <div class="duo duo-center">
+    <!-- ============ LỊCH ============ -->
+    <section class="section calendar-sec reveal">
+      <h2 class="section-title script">Tháng 12 · 2026</h2>
+      <div class="calendar" id="calendar"></div>
+      <p class="calendar-note"><span class="dot"></span> Ngày vui của chúng mình</p>
+    </section>
+
+    <!-- ============ ĐẾM NGƯỢC ============ -->
+    <section class="section countdown-sec reveal">
+      <div class="side-toggle" role="tablist" aria-label="Chọn bên">
+        <button type="button" role="tab" data-side="groom">Nhà Trai</button>
+        <button type="button" role="tab" data-side="bride">Nhà Gái</button>
+      </div>
+      <p class="eyebrow" id="cdLabel">Đếm ngược</p>
+      <p class="cd-when" id="cdWhen"></p>
+      <div class="countdown" id="countdown">
+        <div><b data-cd="d">0</b><span>Ngày</span></div>
+        <div><b data-cd="h">0</b><span>Giờ</span></div>
+        <div><b data-cd="m">0</b><span>Phút</span></div>
+        <div><b data-cd="s">0</b><span>Giây</span></div>
+      </div>
+    </section>
+
+    </div>
+
+    <!-- ============ ALBUM ============ -->
+    <section class="section gallery-sec">
+      <h2 class="section-title script reveal">Album Hình Cưới</h2>
+      <p class="gallery-count reveal" id="galleryCount"></p>
+      <div class="gallery" id="gallery"></div>
+      <div class="gallery-more">
+        <button type="button" class="btn btn-soft" id="galleryMore" hidden></button>
+      </div>
+    </section>
+
+    <div class="duo">
+    <!-- ============ XÁC NHẬN THAM DỰ ============ -->
+    <section class="section rsvp reveal" id="rsvp">
+      <h2 class="section-title script">Xác Nhận Tham Dự</h2>
+      <p class="muted">Để việc đón tiếp được chu đáo, mong Quý khách xác nhận giúp gia đình nhé!</p>
+      <form id="rsvpForm" class="card form">
+        <label>Họ và tên
+          <input name="name" required maxlength="80" placeholder="Nhập tên của bạn" />
+        </label>
+        <label>Bạn là khách của
+          <select name="side">
+            <option>Nhà Trai</option>
+            <option>Nhà Gái</option>
+            <option>Cả hai</option>
+          </select>
+        </label>
+        <div class="radio-row">
+          <label class="pill"><input type="radio" name="attend" value="Sẽ tham dự" checked /><span>Sẽ đến dự 🥰</span></label>
+          <label class="pill"><input type="radio" name="attend" value="Không thể tham dự" /><span>Không thể đến 😢</span></label>
+        </div>
+        <label>Số người tham dự
+          <select name="count">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+          </select>
+        </label>
+        <button class="btn btn-primary" type="submit">Gửi xác nhận</button>
+        <p class="form-msg" id="rsvpMsg" role="status"></p>
+      </form>
+    </section>
+
+    <!-- ============ SỔ LƯU BÚT ============ -->
+    <section class="section wishes reveal" id="wishes">
+      <h2 class="section-title script">Gửi Lời Chúc</h2>
+      <p class="muted">Hãy để lại đôi lời chúc phúc gửi đến cô dâu chú rể nhé!</p>
+      <form id="wishForm" class="card form">
+        <label>Tên của bạn
+          <input name="name" required maxlength="80" placeholder="Nhập tên của bạn" />
+        </label>
+        <label>Lời chúc
+          <textarea name="message" required maxlength="500" rows="3" placeholder="Gửi lời chúc đến cô dâu chú rể..."></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Gửi lời chúc 💌</button>
+        <p class="form-msg" id="wishMsg" role="status"></p>
+      </form>
+      <div class="wish-list" id="wishList"></div>
+    </section>
+
+    </div>
+
+    <!-- ============ MỪNG CƯỚI ============ -->
+    <section class="section gift reveal">
+      <div class="gift-box">
+        <svg class="gift-icon" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M10 28h44v28a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V28Z" fill="#fde8ee" stroke="currentColor" stroke-width="2"/>
+          <rect x="6" y="18" width="52" height="11" rx="3" fill="#f9d3de" stroke="currentColor" stroke-width="2"/>
+          <path d="M32 18v42" stroke="currentColor" stroke-width="2"/>
+          <path d="M32 18c-4-9-15-11-15-4 0 4 7 4 15 4Zm0 0c4-9 15-11 15-4 0 4-7 4-15 4Z" fill="#f9d3de" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M32 44c-5-3.5-8-6-8-9a3.5 3.5 0 0 1 8-1.5 3.5 3.5 0 0 1 8 1.5c0 3-3 5.5-8 9Z" fill="currentColor"/>
+        </svg>
+        <h2 class="script gift-title">Gửi Yêu Thương</h2>
+        <p class="gift-note">Sự hiện diện của Quý vị là món quà ý nghĩa nhất đối với chúng mình.</p>
+        <p class="gift-sub">Quý vị có thể nhắn gửi lời chúc phúc trực tiếp đến cô dâu chú rể qua Zalo, Messenger hoặc tin nhắn.</p>
+        <button type="button" class="btn btn-soft" id="giftOpen">Nhắn lời chúc 💌</button>
+      </div>
+    </section>
+
+    <!-- ============ CẢM ƠN ============ -->
+    <section class="thanks" id="thanks">
+      <div class="thanks-img" id="thanksImg"></div>
+      <div class="thanks-overlay"></div>
+      <div class="thanks-content reveal">
+        <h2 class="script">Thank you!</h2>
+        <p>Rất hân hạnh được đón tiếp!</p>
+        <p class="script thanks-names"><span data-f="groom.shortName"></span> &amp; <span data-f="bride.shortName"></span></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-close" aria-label="Đóng">×</button>
+    <button class="lb-prev" aria-label="Ảnh trước">‹</button>
+    <img alt="Ảnh cưới" />
+    <span class="lb-count" id="lbCount"></span>
+    <button class="lb-next" aria-label="Ảnh sau">›</button>
+  </div>
+
+  <!-- Hộp quà -->
+  <div class="modal" id="giftModal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="giftModalTitle">
+      <button type="button" class="modal-close" aria-label="Đóng">×</button>
+      <h3 class="script" id="giftModalTitle">Nhắn gửi yêu thương</h3>
+      <div class="gift-tabs" id="giftTabs" role="tablist"></div>
+      <div class="gift-panel" id="giftPanel"></div>
+      <p class="modal-thanks">Cảm ơn Quý vị đã dành tình cảm cho chúng mình 💕</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
